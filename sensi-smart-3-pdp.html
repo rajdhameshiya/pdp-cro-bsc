@@ -288,6 +288,12 @@
       flex-wrap: wrap;
       font-size: 13px;
     }
+    .rating-tag-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
     .rating-row .stars { font-size: 19px; letter-spacing: 1px; }
     .rating-row strong { font-weight: 800; }
     .rating-row a {
@@ -306,7 +312,7 @@
     }
     .skin-tag {
       width: fit-content;
-      padding: 5px 10px;
+      padding: 4px 10px;
       background: #E6F9F3;
       color: var(--brand-green);
       font-size: 11px;
@@ -832,6 +838,7 @@
       display: grid;
       gap: 18px;
       margin-top: 20px;
+      min-width: 0;
     }
     .rating-summary {
       padding: 16px;
@@ -882,12 +889,16 @@
     .reviews-grid {
       display: grid;
       gap: 12px;
+      min-width: 0;
     }
     .review-card {
       display: none;
       background: white;
       box-shadow: var(--shadow-sm);
       transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.25s ease;
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
     }
     .review-card.visible { display: block; animation: fadeIn 0.25s ease both; }
     .review-card:hover {
@@ -914,12 +925,16 @@
       margin: 8px 0 4px;
       font-size: 14px;
       font-weight: 800;
+      overflow-wrap: anywhere;
     }
     .review-text {
       margin: 0;
       color: var(--brand-mid);
       font-size: 14px;
       line-height: 1.55;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      word-break: normal;
     }
     .review-photo {
       width: 60px;
@@ -1211,7 +1226,10 @@
     }
 
     @media (max-width: 767px) {
-      .container { width: min(100% - 24px, 1180px); }
+      .container {
+        width: calc(100% - 24px);
+        max-width: 100%;
+      }
       .announcement {
         height: auto;
         min-height: 34px;
@@ -1231,7 +1249,7 @@
         order: 1;
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 6px;
         padding: 8px 10px;
         border-radius: 4px;
         background: white;
@@ -1263,10 +1281,16 @@
       .brand-kicker { font-size: 10px; }
       .product-heading { display: none; }
       .rating-row { font-size: 12px; gap: 5px; }
-      .rating-row .stars { font-size: 22px; }
+      .rating-row .stars { font-size: 18px; line-height: 1; }
+      .rating-row a {
+        min-height: auto;
+      }
+      .rating-tag-group {
+        gap: 5px;
+      }
       .product-title { font-size: 20px; }
       .skin-tag {
-        padding: 3px 8px;
+        padding: 4px 9px;
         font-size: 10px;
       }
       .tagline { display: none; }
@@ -1365,6 +1389,9 @@
       .reviews-layout {
         grid-template-columns: 1fr;
         gap: 12px;
+        width: min(100%, calc(100vw - 24px));
+        max-width: calc(100vw - 24px);
+        overflow: hidden;
       }
       .rating-summary {
         padding: 12px;
@@ -1374,9 +1401,27 @@
       }
       .reviews-grid {
         grid-template-columns: 1fr;
+        width: min(100%, calc(100vw - 24px));
+        max-width: calc(100vw - 24px);
+        overflow: hidden;
       }
       .review-card {
         padding: 14px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      .review-card > div:first-child {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+      }
+      .review-card .stars {
+        font-size: 17px;
+      }
+      .verified {
+        margin-left: 0;
       }
       .review-meta {
         display: grid;
@@ -1387,6 +1432,7 @@
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        font-size: 13px;
       }
       .spec-row {
         grid-template-columns: 1fr;
@@ -1459,6 +1505,12 @@
         top: 80px;
       }
       .product-title { font-size: 32px; }
+      .rating-tag-group {
+        gap: 8px;
+      }
+      .rating-row .stars {
+        font-size: 22px;
+      }
       .cta-group {
         flex-direction: row;
         order: 5;
@@ -1566,8 +1618,10 @@
     <section class="container product-atf section" aria-label="Sensi Smart 3 product details">
       <div class="mobile-summary">
         <h1 class="product-title">Sensi Smart 3 Razor</h1>
-        <div class="rating-row"><span class="stars">★★★★<span class="star-muted">★</span></span><strong>4.78</strong><a href="#reviews">187 reviews</a></div>
-        <span class="pill skin-tag">🧴 Best for Sensitive Skin</span>
+        <div class="rating-tag-group">
+          <div class="rating-row"><span class="stars">★★★★<span class="star-muted">★</span></span><strong>4.78</strong><a href="#reviews">187 reviews</a></div>
+          <span class="pill skin-tag">🧴 Best for Sensitive Skin</span>
+        </div>
       </div>
 
       <div class="gallery">
@@ -1592,8 +1646,10 @@
       <div class="product-info-col">
         <div class="product-heading">
           <h1 class="product-title">Sensi Smart 3 Razor</h1>
-          <div class="rating-row"><span class="stars">★★★★<span class="star-muted">★</span></span><strong>4.78</strong><a href="#reviews">187 reviews</a></div>
-          <span class="pill skin-tag">🧴 Best for Sensitive Skin</span>
+          <div class="rating-tag-group">
+            <div class="rating-row"><span class="stars">★★★★<span class="star-muted">★</span></span><strong>4.78</strong><a href="#reviews">187 reviews</a></div>
+            <span class="pill skin-tag">🧴 Best for Sensitive Skin</span>
+          </div>
         </div>
         <p class="tagline">Sensi on your skin. Sensi on your pocket.</p>
         <div class="price-box">
