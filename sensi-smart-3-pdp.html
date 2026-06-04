@@ -35,6 +35,7 @@
       --brand-dark: #F8F7F4;
       --brand-navy: #102234;
       --brand-red: #D7282F;
+      --brand-cta: #00BDDB;
       --brand-orange: #F4A51C;
       --brand-green: #14805E;
       --brand-cream: #FFF4E0;
@@ -445,7 +446,7 @@
       min-height: 44px;
       padding: 0 10px;
       background: transparent;
-      color: var(--brand-red);
+      color: var(--brand-cta);
       font-size: 12px;
       font-weight: 800;
       text-decoration: underline;
@@ -461,12 +462,12 @@
     }
     .pincode > #pincodeCheck {
       background: white;
-      color: var(--brand-red);
-      border: 1px solid var(--brand-red);
+      color: var(--brand-cta);
+      border: 1px solid var(--brand-cta);
     }
     .pincode .detect-pin {
       background: transparent;
-      color: var(--brand-red);
+      color: var(--brand-cta);
       border: 0;
       text-decoration: underline;
       box-shadow: none;
@@ -495,15 +496,22 @@
       width: 100%;
       min-height: 54px;
       border-radius: 4px;
-      color: white;
       font-size: 16px;
       font-weight: 800;
       letter-spacing: 0.3px;
     }
-    .btn-atc, .btn-bundle { background: var(--brand-red); }
+    .btn-atc {
+      background: var(--brand-cta);
+      color: white;
+    }
+    .btn-bundle {
+      background: white;
+      color: var(--brand-cta);
+      border: 1px solid var(--brand-cta);
+    }
     @keyframes ctaPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.4); }
-      50% { box-shadow: 0 0 0 10px rgba(230, 57, 70, 0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0, 189, 219, 0.34); }
+      50% { box-shadow: 0 0 0 10px rgba(0, 189, 219, 0); }
     }
     .btn-atc { animation: ctaPulse 3s ease-in-out infinite; }
     .payment-row {
@@ -595,11 +603,13 @@
     .coupon-card button {
       min-height: 32px;
       border-radius: 4px;
-      padding: 0 10px;
-      background: var(--brand-red);
-      color: white;
+      padding: 0;
+      background: transparent;
+      color: var(--brand-cta);
       font-size: 12px;
       font-weight: 800;
+      text-decoration: underline;
+      box-shadow: none;
     }
 
     .features-section { order: 2; }
@@ -780,8 +790,9 @@
       min-height: 44px;
       margin-top: 10px;
       border-radius: 8px;
-      background: var(--brand-navy);
-      color: white;
+      background: white;
+      color: var(--brand-cta);
+      border: 1px solid var(--brand-cta);
       font-size: 13px;
       font-weight: 800;
     }
@@ -845,10 +856,13 @@
       border-radius: 10px;
       background: white;
       box-shadow: var(--shadow-sm);
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
     }
     .bar-row {
       display: grid;
-      grid-template-columns: 34px 1fr 42px;
+      grid-template-columns: 34px minmax(0, 1fr) 42px;
       align-items: center;
       gap: 8px;
       margin-top: 8px;
@@ -857,6 +871,7 @@
       font-weight: 700;
     }
     .bar-bg {
+      min-width: 0;
       height: 8px;
       background: var(--brand-light);
       border-radius: 999px;
@@ -867,10 +882,13 @@
       display: flex;
       gap: 8px;
       overflow-x: auto;
+      max-width: 100%;
       margin-top: 14px;
       padding-bottom: 2px;
+      -webkit-overflow-scrolling: touch;
     }
     .filter-tabs button {
+      flex: 0 0 auto;
       min-height: 44px;
       padding: 0 14px;
       border-radius: 50px;
@@ -950,8 +968,8 @@
       padding: 0 22px;
       border-radius: 4px;
       background: transparent;
-      color: var(--brand-red);
-      border: 1px solid var(--brand-red);
+      color: var(--brand-cta);
+      border: 1px solid var(--brand-cta);
       font-weight: 800;
     }
 
@@ -1139,7 +1157,7 @@
       line-height: 1.2;
     }
     .sticky-info span {
-      color: var(--brand-red);
+      color: var(--brand-cta);
       font-size: 16px;
       font-weight: 800;
     }
@@ -1147,7 +1165,7 @@
       min-height: 44px;
       padding: 0 24px;
       border-radius: 8px;
-      background: var(--brand-red);
+      background: var(--brand-cta);
       color: white;
       font-size: 14px;
       font-weight: 800;
@@ -1196,12 +1214,12 @@
     }
     .qty-stepper {
       min-height: 52px;
-      border: 1px solid #1F5BA8;
+      border: 1px solid var(--brand-cta);
       border-radius: 6px;
       display: grid;
       grid-template-columns: 44px 1fr 44px;
       align-items: center;
-      color: #1F5BA8;
+      color: var(--brand-cta);
       font-size: 20px;
       font-weight: 800;
       overflow: hidden;
@@ -1210,14 +1228,18 @@
       min-height: 52px;
       border-radius: 0;
       background: white;
-      color: #1F5BA8;
+      color: var(--brand-cta);
       box-shadow: none;
       font-size: 24px;
     }
     .qty-stepper span {
       text-align: center;
     }
-    .view-cart { background: #1F5BA8; color: white; }
+    .view-cart {
+      background: white;
+      color: var(--brand-cta);
+      border: 1px solid var(--brand-cta);
+    }
 
     @media (max-width: 359px) {
       .features-grid, .benefit-grid { grid-template-columns: 1fr; }
@@ -1367,6 +1389,18 @@
         font-size: 16px;
         font-weight: 700;
       }
+      .reviews-section .section-title {
+        max-width: 100%;
+        font-size: 18px;
+        line-height: 1.25;
+        text-wrap: balance;
+      }
+      .reviews-section .section-title .stars {
+        display: block;
+        font-size: 18px;
+        line-height: 1.1;
+        margin-bottom: 4px;
+      }
       .section-subtitle { display: none; }
       .features-grid { grid-template-columns: 1fr; }
       .quick-info-grid {
@@ -1395,9 +1429,29 @@
       }
       .rating-summary {
         padding: 12px;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
+      .bar-row {
+        grid-template-columns: 28px minmax(0, 1fr) 34px;
+        gap: 6px;
+        font-size: 13px;
       }
       .filter-tabs {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin-right: 0;
         padding-bottom: 8px;
+        overscroll-behavior-inline: contain;
+        scrollbar-width: none;
+      }
+      .filter-tabs::-webkit-scrollbar { display: none; }
+      .filter-tabs button {
+        min-height: 42px;
+        padding: 0 12px;
+        font-size: 13px;
       }
       .reviews-grid {
         grid-template-columns: 1fr;
@@ -1675,8 +1729,8 @@
           <span>🛡️ 2-Year Warranty</span>
         </div>
         <div class="coupon-strip" aria-label="Available coupons">
-          <article class="coupon-card"><span>Extra Saving</span><strong>BSC10</strong><button type="button">Copy</button></article>
-          <article class="coupon-card"><span>Flat ₹20 Off</span><strong>SHAVE20</strong><button type="button">Copy</button></article>
+          <article class="coupon-card"><span>Extra Saving</span><strong>BSC10</strong><button type="button">Copy Code</button></article>
+          <article class="coupon-card"><span>Flat ₹20 Off</span><strong>SHAVE20</strong><button type="button">Copy Code</button></article>
         </div>
         <div class="shipping-box" aria-hidden="true">
           <p class="shipping-title" id="shippingTitle">🚚 Add ₹300 more for FREE shipping</p>
